@@ -26,11 +26,11 @@ The `ReservablePriorityReqStore` extends SimPy's `Store` by allowing users to:
 
 
 
-##### Parameters:  
+##### Parameters
 - **`env`**: The SimPy environment managing the simulation.  
 - **`capacity`**: Maximum number of items the store can hold (default: infinite).  
 
-##### Example Usage:  
+##### Example Usage 
 ```python
 import simpy
 import random
@@ -88,7 +88,7 @@ env.process(producer(env, itemstore, "ItemC", priority=3))
 env.run(until=10)
 ```
 
-##### Simulation output :  
+##### Simulation output   
 ```
 T=0.00 : Consumer1 placed a reserve_get request to store with priority 3
 T=0.00 : Consumer1 CANCELED reservation
@@ -275,7 +275,7 @@ PriorityReqStore is a resource store with basic priority handling capabilities. 
 - Manages multiple requests with different priorities.
 
 
-##### Parameters:  
+##### Parameters  
 - **`env`**: The SimPy environment managing the simulation.  
 - **`capacity`**: Maximum number of items the store can hold (default: infinite).  
 
