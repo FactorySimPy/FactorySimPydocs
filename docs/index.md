@@ -263,6 +263,8 @@ T=4.00: Machine green: got both inputs
 ```
 
 
+[Go to API Reference](reservablepriorityreqstore.md)
+
 ---
 
 ## PriorityReqStore
@@ -405,3 +407,4 @@ T=2.00: IT Department added System_3_after_delay
 T=2.00: Admin received System_3_after_delay
 ```
 
+[Go to API Reference](priorityreqstore.md)
