@@ -401,15 +401,3 @@ T=2.00: IT Department added System_3_after_delay
 T=2.00: Admin received System_3_after_delay
 ```
 
-# API Reference
-
-::: PriorityReqStore.PriorityReqStore.PriorityReqStore
-    options:
-      show_root_heading: true
-      show_source: false
-      members_order: source
-      filters:
-        - "!^_.*"        # hide all methods starting with _ (private)
-        - "!^__.*__$"    # hide all __dunder__ methods
-
----
