@@ -106,7 +106,7 @@ T=6.02 : Consumer3 retrieved ItemA from store with priority 2
 
 ##### Usecase
 ```python
-# @title USecase
+# @title Usecase
 import simpy
 from ReservablePriorityReqStore import ReservablePriorityReqStore
 
@@ -400,3 +400,16 @@ T=2.00: Research Lab received System_2_after_delay
 T=2.00: IT Department added System_3_after_delay
 T=2.00: Admin received System_3_after_delay
 ```
+
+# API Reference
+
+::: PriorityReqStore.PriorityReqStore
+    options:
+      show_root_heading: true
+      show_source: false
+      members_order: source
+      filters:
+        - "!^_.*"        # hide all methods starting with _ (private)
+        - "!^__.*__$"    # hide all __dunder__ methods
+
+---
