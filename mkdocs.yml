@@ -15,10 +15,10 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
-          paths: ['ReservablePriorityReqStore', 'PriorityReqStore']  # Specify the paths to your modules here
-          # paths: 
-          # - ReservablePriorityReqStore/ReservablePriorityReqStore.py
-          # - PriorityReqStore/PriorityReqStore.py # Specify the paths to your modules here
+          #paths: ['ReservablePriorityReqStore', 'PriorityReqStore']  # Specify the paths to your modules here
+          paths: 
+          - ReservablePriorityReqStore
+          - PriorityReqStore # Specify the paths to your modules here
 
 markdown_extensions:
   - admonition
