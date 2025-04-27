@@ -403,7 +403,7 @@ T=2.00: Admin received System_3_after_delay
 
 # API Reference
 
-::: PriorityReqStore.PriorityReqStore
+::: PriorityReqStore.PriorityReqStore.PriorityReqStore
     options:
       show_root_heading: true
       show_source: false
