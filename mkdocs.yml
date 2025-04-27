@@ -1,4 +1,5 @@
 site_name: Extended Resources for FactorySimPy
+site_url: https://factorysimpy.github.io/FactorySimPydocs/
 
 theme:
   name: material  # optional: for Material Design theme
