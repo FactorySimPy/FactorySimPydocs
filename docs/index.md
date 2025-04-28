@@ -34,7 +34,7 @@ The `ReservablePriorityReqStore` extends SimPy's `Store` by allowing users to:
 ```python
 import simpy
 import random
-#from ReservablePriorityReqStore import ReservablePriorityReqStore
+from ReservablePriorityReqStore import ReservablePriorityReqStore
 
 class Item:
     """Represents an item to be stored."""
@@ -284,7 +284,7 @@ PriorityReqStore is a resource store with basic priority handling capabilities. 
 ### Example Usage
 ```python
 import simpy
-
+from PriorityReqStore import PriorityReqStore
 
 class item:
   def __init__(self,name):
