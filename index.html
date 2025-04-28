@@ -687,7 +687,7 @@ However, when implementhing SimPy interrupts, the events should be manually canc
 <h5 id="example-usage">Example Usage<a class="headerlink" href="#example-usage" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">simpy</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
-<span class="c1">#from ReservablePriorityReqStore import ReservablePriorityReqStore</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ReservablePriorityReqStore</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReservablePriorityReqStore</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Item</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents an item to be stored.&quot;&quot;&quot;</span>
@@ -916,7 +916,7 @@ T=4.00: Machine green: got both inputs
 </ul>
 <h3 id="example-usage_1">Example Usage<a class="headerlink" href="#example-usage_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">simpy</span>
-
+<span class="kn">from</span><span class="w"> </span><span class="nn">PriorityReqStore</span><span class="w"> </span><span class="kn">import</span> <span class="n">PriorityReqStore</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">item</span><span class="p">:</span>
   <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
