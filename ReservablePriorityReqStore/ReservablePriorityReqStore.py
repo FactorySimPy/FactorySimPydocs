@@ -166,7 +166,7 @@ class ReservablePriorityReqStore(Store):
             put_event_to_cancel (simpy.Event): The reservation event that needs to be canceled.
 
         Returns:
-           Value (bool): True if the reservation was successfully canceled.
+           proceed (bool): True if the reservation was successfully canceled.
 
         Raises:
             RuntimeError: If the specified event does not exist in `reserve_put_queue`
@@ -174,19 +174,20 @@ class ReservablePriorityReqStore(Store):
         """
 
       #checking and removing the event if it is not yielded and is present in the reserve_put_queue
+      proceed = False
       if put_event_to_cancel in self.reserve_put_queue:
         self.reserve_put_queue.remove(put_event_to_cancel)
         self._trigger_reserve_put(None)#if t is removed, then a waiting event can be succeeded, if any
-        return True
+        proceed = True
       #checking and removing the event if it is already yielded and is present in the reservations_put
       elif put_event_to_cancel in self.reservations_put:
         self.reservations_put.remove(put_event_to_cancel)
         self._trigger_reserve_put(None)#if t is removed, then a waiting event can be succeeded, if any
-        return True
+        proceed = True
 
       else:
         raise RuntimeError("No matching event in reserve_put_queue or reservations_put for this process")
-
+      return proceed
 
     def reserve_get_cancel(self, get_event_to_cancel):
 
@@ -205,18 +206,19 @@ class ReservablePriorityReqStore(Store):
             get_event_to_cancel (simpy.Event): The reservation event that needs to be canceled.
 
         Returns:
-            Value (bool): True if the reservation was successfully canceled.
+            proceed (bool): True if the reservation was successfully canceled.
 
         Raises:
             RuntimeError: If the specified event does not exist in `reserve_get_queue`
                           or `reservations_get`.
         """
-
+      
+      proceed = False
       #checking and removing the event if it is not yielded and is present in the reserve_get_queue
       if get_event_to_cancel in self.reserve_get_queue:
         self.reserve_get_queue.remove(get_event_to_cancel)
         self._trigger_reserve_get(None)#if t is removed, then a waiting event can be succeeded, if any
-        return True
+        proceed = True
 
       #checking and removing the event if it is already yielded and is present in the reservations_queue.
       # 1-to-1 association with items done to preserve item order should also be removed.
@@ -234,11 +236,12 @@ class ReservablePriorityReqStore(Store):
         self.reserved_events.pop(event_in_index)#if t is removed, then a waiting event can be succeeded, if any
 
         self._trigger_reserve_get(None)
-        return True
+        proceed = True
 
       else:
         raise RuntimeError("No matching event in reserve_get_queue or reservations_get for this process")
-
+      
+      return proceed
 
     def reserve_get(self,priority=0):
         """
@@ -447,7 +450,7 @@ class ReservablePriorityReqStore(Store):
             item (object): The item to be added to the store.
 
         Returns:
-            proceed bool: True if the put operation succeeded, False otherwise.
+            proceed (bool): True if the put operation succeeded, False otherwise.
 
         Raises:
             RuntimeError: If no reservations are available in the reservations_put
@@ -506,7 +509,7 @@ class ReservablePriorityReqStore(Store):
             item (object): The item to be stored.
 
         Returns:
-            bool: True if the item was successfully added, else raises an error
+            proceed (bool): True if the item was successfully added, else raises an error
 
         Raises:
             RuntimeError: If the process does not have a valid reservation ie, if the put_event is not in the reservations_put list
@@ -514,7 +517,7 @@ class ReservablePriorityReqStore(Store):
         """
 
         # Locate and remove the reservation event efficiently
-
+    
         reserved_event = next(
             (event for event in self.reservations_put if event == put_event and event.requesting_process == self.env.active_process),
             None
@@ -532,6 +535,8 @@ class ReservablePriorityReqStore(Store):
         if len(self.items) < self.capacity:
             self.items.append(item)
             return True  # Successfully added item
+        
 
 
 
+        

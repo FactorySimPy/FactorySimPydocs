@@ -849,7 +849,8 @@ triggered to handle pending reservations.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-<td><code>bool</code></td>            <td>
+<td><code>Value</code></td>            <td>
+                  <code><span title="bool">bool</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -945,17 +946,18 @@ reservations if items are available.</p>
     <table>
       <thead>
         <tr>
-          <th>Type</th>
+<th>Name</th>          <th>Type</th>
           <th>Description</th>
         </tr>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td>
+<td><code>event</code></td>            <td>
+                  <code><span title="simpy.Event">Event</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>simpy.Event: A reservation event that will succeed when an item becomes available.</p>
+                <p>A reservation event that will succeed when an item becomes available.</p>
               </div>
             </td>
           </tr>
@@ -1027,7 +1029,8 @@ message is raised.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-<td><code>object</code></td>            <td>
+<td><code>item</code></td>            <td>
+                  <code><span title="Object">Object</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -1143,17 +1146,17 @@ If the put operation succeeds, it triggers <code>_trigger_reserve_get</code> to 
     <table>
       <thead>
         <tr>
-<th>Name</th>          <th>Type</th>
+          <th>Type</th>
           <th>Description</th>
         </tr>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-<td><code>bool</code></td>            <td>
+            <td>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>True if the put operation succeeded, False otherwise.</p>
+                <p>proceed bool: True if the put operation succeeded, False otherwise.</p>
               </div>
             </td>
           </tr>
