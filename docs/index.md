@@ -94,7 +94,7 @@ env.process(producer(env, itemstore, "ItemC", priority=3))
 env.run(until=10)
 ```
 
-###### Simulation output   
+-**Simulation output**  
 ```
 T=0.00 : Consumer1 placed a reserve_get request to store with priority 3
 T=0.00 : Consumer1 CANCELED reservation
@@ -250,7 +250,7 @@ run_simulation()
 
 ```
 
-###### Simulation output
+-**Simulation output** 
 
 ```
 T=0.00: Machine orange: waiting to yield reserve_get requests
@@ -282,7 +282,8 @@ T=4.00: Machine green: got both inputs
 PriorityReqStore is a resource store with basic priority handling capabilities. Users can add a priority for each of the get(or put) requests. Request with lower values of priority yields first. If two requests with same priority are placed from two processes then FIFO order is followed to yield the requests.
 
 **Main Features:**
-- Manages concurrent requests with different priority values.
+
+- **Priority for requests**: Manages concurrent requests with different priority values.
 
 
 ##### Parameters  
@@ -331,7 +332,7 @@ p4= env.process(source('IN-B',env,1,1))
 env.run(until=5)
 ```
 
-###### Simulation output
+-**Simulation output** 
 ```
 T=0.00: Sink OUT-1 placed a get request with priority 2 in the store
 T=0.00: Sink OUT-2 placed a get request with priority 1 in the store
@@ -401,8 +402,7 @@ if __name__ == "__main__":
 
 ```
 
-
-###### Simulation output
+-**Simulation output** 
 ```
 T=0.00: Admin places a request with priority 3
 T=0.00: Library places a request with priority 3
