@@ -312,7 +312,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Example Usage">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#simulation-output" class="md-nav__link">
@@ -323,6 +324,11 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#usecase" class="md-nav__link">
     <span class="md-ellipsis">
@@ -330,7 +336,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Usecase">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#simulation-output_1" class="md-nav__link">
@@ -338,6 +345,11 @@
       Simulation output
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -372,7 +384,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Example Usage">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#simulation-output_2" class="md-nav__link">
@@ -383,6 +396,11 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#usecase_1" class="md-nav__link">
     <span class="md-ellipsis">
@@ -390,7 +408,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Usecase">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#simulation-output_3" class="md-nav__link">
@@ -398,6 +417,11 @@
       Simulation output
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -558,7 +582,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Example Usage">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#simulation-output" class="md-nav__link">
@@ -569,6 +594,11 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#usecase" class="md-nav__link">
     <span class="md-ellipsis">
@@ -576,7 +606,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Usecase">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#simulation-output_1" class="md-nav__link">
@@ -584,6 +615,11 @@
       Simulation output
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -618,7 +654,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Example Usage">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#simulation-output_2" class="md-nav__link">
@@ -629,6 +666,11 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#usecase_1" class="md-nav__link">
     <span class="md-ellipsis">
@@ -636,7 +678,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Usecase">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#simulation-output_3" class="md-nav__link">
@@ -644,6 +687,11 @@
       Simulation output
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -752,7 +800,7 @@ However, when implementhing SimPy interrupts, the events should be manually canc
 
 <span class="n">env</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">until</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div>
-<h5 id="simulation-output">Simulation output<a class="headerlink" href="#simulation-output" title="Permanent link">&para;</a></h5>
+<h6 id="simulation-output">Simulation output<a class="headerlink" href="#simulation-output" title="Permanent link">&para;</a></h6>
 <div class="highlight"><pre><span></span><code>T=0.00 : Consumer1 placed a reserve_get request to store with priority 3
 T=0.00 : Consumer1 CANCELED reservation
 T=0.00 : Consumer2 placed a reserve_get request to store with priority 1
@@ -900,7 +948,7 @@ T=6.02 : Consumer3 retrieved ItemA from store with priority 2
 <span class="c1"># Run it</span>
 <span class="n">run_simulation</span><span class="p">()</span>
 </code></pre></div>
-<h5 id="simulation-output_1">Simulation output<a class="headerlink" href="#simulation-output_1" title="Permanent link">&para;</a></h5>
+<h6 id="simulation-output_1">Simulation output<a class="headerlink" href="#simulation-output_1" title="Permanent link">&para;</a></h6>
 <div class="highlight"><pre><span></span><code>T=0.00: Machine orange: waiting to yield reserve_get requests
 T=0.00: Machine green: waiting to yield reserve_get requests
 T=1.00: Producer red: added red1 (store size=1)
@@ -968,7 +1016,7 @@ T=4.00: Machine green: got both inputs
 
 <span class="n">env</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">until</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="simulation-output_2">Simulation output<a class="headerlink" href="#simulation-output_2" title="Permanent link">&para;</a></h3>
+<h6 id="simulation-output_2">Simulation output<a class="headerlink" href="#simulation-output_2" title="Permanent link">&para;</a></h6>
 <div class="highlight"><pre><span></span><code>T=0.00: Sink OUT-1 placed a get request with priority 2 in the store
 T=0.00: Sink OUT-2 placed a get request with priority 1 in the store
 T=1.00: Source IN-A Going to put an item in store itemIN-A1 with priority 2
@@ -1032,7 +1080,7 @@ T=1.00: Sink OUT-1 Got an item from store itemIN-B1
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">run_central_it_simulation</span><span class="p">()</span>
 </code></pre></div>
-<h3 id="simulation-output_3">Simulation output<a class="headerlink" href="#simulation-output_3" title="Permanent link">&para;</a></h3>
+<h6 id="simulation-output_3">Simulation output<a class="headerlink" href="#simulation-output_3" title="Permanent link">&para;</a></h6>
 <div class="highlight"><pre><span></span><code>T=0.00: Admin places a request with priority 3
 T=0.00: Library places a request with priority 3
 T=0.00: Student Lab places a request with priority 1
