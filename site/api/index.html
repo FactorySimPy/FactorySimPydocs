@@ -566,7 +566,7 @@ event is canceled.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code><span title="ReservablePriorityReqStore.ReservablePriorityReqStore.reserve_get_queue(list)">reserve_get_queue(list)</span></code></td>
+            <td><code><span title="ReservablePriorityReqStore.ReservablePriorityReqStore.reserve_get_queue">reserve_get_queue</span></code></td>
             <td>
                   <code><span title="list">list</span></code>
             </td>
@@ -577,7 +577,7 @@ event is canceled.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code><span title="ReservablePriorityReqStore.ReservablePriorityReqStore.reservations_get(list)">reservations_get(list)</span></code></td>
+            <td><code><span title="ReservablePriorityReqStore.ReservablePriorityReqStore.reservations_get">reservations_get</span></code></td>
             <td>
                   <code><span title="list">list</span></code>
             </td>
@@ -664,17 +664,18 @@ any pending reservations.</p>
     <table>
       <thead>
         <tr>
-          <th>Type</th>
+<th>Name</th>          <th>Type</th>
           <th>Description</th>
         </tr>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td>
+<td><code>event</code></td>            <td>
+                  <code><span title="simpy.Event">Event</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>simpy.Event: A reservation event that will succeed when space is available.</p>
+                <p>A reservation event that will succeed when space is available.</p>
               </div>
             </td>
           </tr>
@@ -746,7 +747,8 @@ If the reservation is already in <code>reservations_put</code>, it is also remov
       </thead>
       <tbody>
           <tr class="doc-section-item">
-<td><code>bool</code></td>            <td>
+<td><code>Value</code></td>            <td>
+                  <code><span title="bool">bool</span></code>
             </td>
             <td>
               <div class="doc-md-description">

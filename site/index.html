@@ -848,7 +848,7 @@ T=4.00: Machine green: got both inputs
 <p><a href="reservablepriorityreqstore/">Go to API Reference</a></p>
 <hr />
 <h2 id="priorityreqstore">PriorityReqStore<a class="headerlink" href="#priorityreqstore" title="Permanent link">&para;</a></h2>
-<p>PriorityReqStore is a resource store with basic priority handling capabilities. Users can add a priority for each of the get(or put) requests. Request with lower values of priority yields first. If two requests with same priority are placed from two processes then FIFO order is followed to yield the requests.</p>
+<p>PriorityReqStore is a resource store with priority handling capabilities. Users can add a priority for each of the get(or put) requests. Request with lower values of priority yields first among all get(or put) requests. If two requests with same priority are placed from two processes then FIFO order is followed to yield the requests.</p>
 <p><strong>Main Features:</strong></p>
 <ul>
 <li><strong>Priority for requests</strong>: Manages concurrent requests with different priority values.</li>
