@@ -137,8 +137,7 @@ def producer(env, interarrival, store, item_prefix):
         yield put_req
         item_name = f"{item_prefix}{i+1}"
         store.put(put_req, item_name)
-        print(f"T={env.now:.2f}: Producer {item_prefix}: added {item_name} 
-                   (store size={len(store.items)})")
+        print(f"T={env.now:.2f}: Producer {item_prefix}: added {item_name})")
         
         i += 1
 
@@ -254,20 +253,20 @@ run_simulation()
 ```
 T=0.00: Machine orange: waiting to yield reserve_get requests
 T=0.00: Machine green: waiting to yield reserve_get requests
-T=1.00: Producer red: added red1 (store size=1)
-T=1.00: Producer blue: added blue1 (store size=1)
-T=2.00: Producer yellow: added yellow1 (store size=1)
-T=2.00: Producer red: added red2 (store size=2)
-T=2.00: Producer blue: added blue2 (store size=2)
+T=1.00: Producer red: added red1 
+T=1.00: Producer blue: added blue1 
+T=2.00: Producer yellow: added yellow1
+T=2.00: Producer red: added red2 
+T=2.00: Producer blue: added blue2
 T=2.00: Machine green: got both inputs
 T=3.00: Machine green: finished product is available in its store
-T=3.00: Producer red: added red3 (store size=3)
-T=3.00: Producer blue: added blue3 (store size=2)
+T=3.00: Producer red: added red3 
+T=3.00: Producer blue: added blue3
 T=3.00: Consumer green: got item green0
 T=3.00: Machine green: waiting to yield reserve_get requests
-T=4.00: Producer yellow: added yellow2 (store size=1)
-T=4.00: Producer red: added red4 (store size=4)
-T=4.00: Producer blue: added blue4 (store size=3)
+T=4.00: Producer yellow: added yellow2 
+T=4.00: Producer red: added red4 
+T=4.00: Producer blue: added blue4 
 T=4.00: Machine green: got both inputs
 ```
 
