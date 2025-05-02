@@ -747,7 +747,7 @@ If the reservation is already in <code>reservations_put</code>, it is also remov
       </thead>
       <tbody>
           <tr class="doc-section-item">
-<td><code>Value</code></td>            <td>
+<td><code>proceed</code></td>            <td>
                   <code><span title="bool">bool</span></code>
             </td>
             <td>
@@ -849,7 +849,7 @@ triggered to handle pending reservations.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-<td><code>Value</code></td>            <td>
+<td><code>proceed</code></td>            <td>
                   <code><span title="bool">bool</span></code>
             </td>
             <td>
@@ -1146,17 +1146,18 @@ If the put operation succeeds, it triggers <code>_trigger_reserve_get</code> to 
     <table>
       <thead>
         <tr>
-          <th>Type</th>
+<th>Name</th>          <th>Type</th>
           <th>Description</th>
         </tr>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td>
+<td><code>proceed</code></td>            <td>
+                  <code><span title="bool">bool</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>proceed bool: True if the put operation succeeded, False otherwise.</p>
+                <p>True if the put operation succeeded, False otherwise.</p>
               </div>
             </td>
           </tr>
