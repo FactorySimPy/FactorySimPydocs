@@ -718,8 +718,7 @@ T=6.02 : Consumer3 retrieved ItemA from store with priority 2
         <span class="k">yield</span> <span class="n">put_req</span>
         <span class="n">item_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">item_prefix</span><span class="si">}{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="n">store</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">put_req</span><span class="p">,</span> <span class="n">item_name</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;T=</span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">: Producer </span><span class="si">{</span><span class="n">item_prefix</span><span class="si">}</span><span class="s2">: added </span><span class="si">{</span><span class="n">item_name</span><span class="si">}</span><span class="s2"> </span>
-                   <span class="p">(</span><span class="n">store</span> <span class="n">size</span><span class="o">=</span><span class="p">{</span><span class="nb">len</span><span class="p">(</span><span class="n">store</span><span class="o">.</span><span class="n">items</span><span class="p">)})</span><span class="s2">&quot;)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;T=</span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">: Producer </span><span class="si">{</span><span class="n">item_prefix</span><span class="si">}</span><span class="s2">: added </span><span class="si">{</span><span class="n">item_name</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 
         <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
 
@@ -830,20 +829,20 @@ T=6.02 : Consumer3 retrieved ItemA from store with priority 2
 <p><strong>Simulation output</strong> </p>
 <div class="highlight"><pre><span></span><code>T=0.00: Machine orange: waiting to yield reserve_get requests
 T=0.00: Machine green: waiting to yield reserve_get requests
-T=1.00: Producer red: added red1 (store size=1)
-T=1.00: Producer blue: added blue1 (store size=1)
-T=2.00: Producer yellow: added yellow1 (store size=1)
-T=2.00: Producer red: added red2 (store size=2)
-T=2.00: Producer blue: added blue2 (store size=2)
+T=1.00: Producer red: added red1 
+T=1.00: Producer blue: added blue1 
+T=2.00: Producer yellow: added yellow1
+T=2.00: Producer red: added red2 
+T=2.00: Producer blue: added blue2
 T=2.00: Machine green: got both inputs
 T=3.00: Machine green: finished product is available in its store
-T=3.00: Producer red: added red3 (store size=3)
-T=3.00: Producer blue: added blue3 (store size=2)
+T=3.00: Producer red: added red3 
+T=3.00: Producer blue: added blue3
 T=3.00: Consumer green: got item green0
 T=3.00: Machine green: waiting to yield reserve_get requests
-T=4.00: Producer yellow: added yellow2 (store size=1)
-T=4.00: Producer red: added red4 (store size=4)
-T=4.00: Producer blue: added blue4 (store size=3)
+T=4.00: Producer yellow: added yellow2 
+T=4.00: Producer red: added red4 
+T=4.00: Producer blue: added blue4 
 T=4.00: Machine green: got both inputs
 </code></pre></div>
 <p><a href="reservablepriorityreqstore/">Go to API Reference</a></p>
