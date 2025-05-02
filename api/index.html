@@ -1226,10 +1226,11 @@ If the put operation succeeds, it triggers <code>_trigger_reserve_get</code> to 
               Bases: <code><span title="simpy.resources.store.Store">Store</span></code></p>
 
 
-        <p>This is a class that is derived from SimPy's Store class and has extra capabilities
-that makes it a priority-based store for processes for item put and get.</p>
-<p>Processes can pass a priority as argument in the put and get request. Lower values indicate higher priority.
-If two processes have the same priority, the one that requested first will be served first.</p>
+        <p>This is a class derived from SimPy's Store class and has extra capabilities
+that makes it a priority-based store for put and get.</p>
+<p>Processes can pass a priority as argument in the put and get request. Request with lower
+values of priority yields first among all get(or put) requests. If two requests with same 
+priority are placed from two processes then FIFO order is followed to yield the requests.</p>
 
 
 
