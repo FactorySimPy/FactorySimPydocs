@@ -677,7 +677,7 @@ However, when implementhing SimPy interrupts, the events should be manually canc
 <p>The <code>ReservablePriorityReqStore</code> extends SimPy's <code>Store</code> by allowing users to:<br />
 - <strong>Reserve Capacity</strong>: Processes can reserve space (or item) in the store before actual put (or get) in it.<br />
 - <strong>Enforce Reservation Rules</strong>: Prohibits any process from adding (or getting) items to the store without a prior reservation.<br />
-- <strong>Priority for requests</strong>: Users can pass a priority along with the reservation requests. The requests with the highest priority(lowest first) will be yielded first. Two requests with same priority will be yielded in a FIFO manner
+- <strong>Priority for requests</strong>: Users can pass a priority along with the reservation requests. The requests with the highest priority(lowest first) will be yielded first. Two requests with same priority will be yielded in a FIFO manner.
 - <strong>Cancel a reservation</strong>: Allows users to cancel a placed/yielded reserve_put (or reserve_get) request.</p>
 <h5 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h5>
 <ul>
@@ -711,10 +711,10 @@ However, when implementhing SimPy interrupts, the events should be manually canc
 
 <span class="k">def</span><span class="w"> </span><span class="nf">consumer</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">itemstore</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">priority</span><span class="p">,</span> <span class="n">cancel</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Consumer process that reserves an item, retrieves it, and optionally cancels.&quot;&quot;&quot;</span>
-    <span class="c1">#yield env.timeout(random.uniform(2, 5))  # Simulate time before consuming</span>
 
     <span class="n">get_reservation</span> <span class="o">=</span> <span class="n">itemstore</span><span class="o">.</span><span class="n">reserve_get</span><span class="p">(</span><span class="n">priority</span><span class="o">=</span><span class="n">priority</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;T=</span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> placed a reserve_get request to store with priority </span><span class="si">{</span><span class="n">priority</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;T=</span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> placed a reserve_get request </span><span class="se">\</span>
+<span class="s2">             to store with priority </span><span class="si">{</span><span class="n">priority</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">cancel</span> <span class="ow">and</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]):</span>
         <span class="n">itemstore</span><span class="o">.</span><span class="n">reserve_get_cancel</span><span class="p">(</span><span class="n">get_reservation</span><span class="p">)</span>
@@ -779,7 +779,8 @@ T=6.02 : Consumer3 retrieved ItemA from store with priority 2
         <span class="k">yield</span> <span class="n">put_req</span>
         <span class="n">item_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">item_prefix</span><span class="si">}{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="n">store</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">put_req</span><span class="p">,</span> <span class="n">item_name</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;T=</span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">: Producer </span><span class="si">{</span><span class="n">item_prefix</span><span class="si">}</span><span class="s2">: added </span><span class="si">{</span><span class="n">item_name</span><span class="si">}</span><span class="s2"> (store size=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">store</span><span class="o">.</span><span class="n">items</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;T=</span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">: Producer </span><span class="si">{</span><span class="n">item_prefix</span><span class="si">}</span><span class="s2">: added </span><span class="si">{</span><span class="n">item_name</span><span class="si">}</span><span class="s2"> </span><span class="se">\</span>
+<span class="s2">                   (store size=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">store</span><span class="o">.</span><span class="n">items</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 
         <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
 
@@ -795,10 +796,11 @@ T=6.02 : Consumer3 retrieved ItemA from store with priority 2
 
 
 <span class="c1"># ----- Machine -----</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">machine</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">delay</span><span class="p">,</span> <span class="n">input_stores</span><span class="p">,</span> <span class="n">input_priorities</span><span class="p">,</span> <span class="n">output_store</span><span class="p">,</span> <span class="n">output_prefix</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">machine</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">delay</span><span class="p">,</span> <span class="n">input_stores</span><span class="p">,</span> <span class="n">input_priorities</span><span class="p">,</span> 
+               <span class="n">output_store</span><span class="p">,</span> <span class="n">output_prefix</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A machine that requests multiple items from input stores (with optional priorities),</span>
-<span class="sd">    waits processing time, and outputs a new item.</span>
+<span class="sd">    A machine that requests multiple items from input stores </span>
+<span class="sd">    (with optional priorities),waits processing time, and outputs a new item.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        input_stores (list): list of stores to get inputs from</span>
@@ -820,7 +822,8 @@ T=6.02 : Consumer3 retrieved ItemA from store with priority 2
                 <span class="n">req</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">reserve_get</span><span class="p">()</span>
             <span class="n">input_requests</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
 
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;T=</span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">: Machine </span><span class="si">{</span><span class="n">output_prefix</span><span class="si">}</span><span class="s2">: waiting to yield reserve_get requests&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;T=</span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">: Machine </span><span class="si">{</span><span class="n">output_prefix</span><span class="si">}</span><span class="s2">: waiting to yield </span><span class="se">\</span>
+<span class="s2">                           reserve_get requests&quot;</span><span class="p">)</span>
         <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">all_of</span><span class="p">(</span><span class="n">input_requests</span><span class="p">)</span>
 
         <span class="c1"># Get input items</span>
@@ -831,7 +834,8 @@ T=6.02 : Consumer3 retrieved ItemA from store with priority 2
         <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
 
         <span class="n">output_store</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">put_req</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">output_prefix</span><span class="si">}{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;T=</span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">: Machine </span><span class="si">{</span><span class="n">output_prefix</span><span class="si">}</span><span class="s2">: finished product is available in its store&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;T=</span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">: Machine </span><span class="si">{</span><span class="n">output_prefix</span><span class="si">}</span><span class="s2">: finished product is </span><span class="se">\</span>
+<span class="s2">                        available in its store&quot;</span><span class="p">)</span>
         <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
 
 <span class="c1"># ----- Simulation Setup -----</span>
@@ -860,8 +864,8 @@ T=6.02 : Consumer3 retrieved ItemA from store with priority 2
 
     <span class="c1"># Machine setups</span>
     <span class="n">machine_params</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">yellowstore</span><span class="p">,</span> <span class="n">redstore</span><span class="p">],</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">orangestore</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">),</span>  <span class="c1"># Machine1</span>
-        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">yellowstore</span><span class="p">,</span> <span class="n">bluestore</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">greenstore</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">)</span>      <span class="c1"># Machine2</span>
+        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">yellowstore</span><span class="p">,</span> <span class="n">redstore</span><span class="p">],</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">orangestore</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">),</span><span class="c1">#Machine1</span>
+        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">yellowstore</span><span class="p">,</span> <span class="n">bluestore</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">greenstore</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">)</span> <span class="c1"># Machine2</span>
     <span class="p">]</span>
 
     <span class="c1"># Start Producers</span>
@@ -908,7 +912,7 @@ T=4.00: Machine green: got both inputs
 <h2 id="priorityreqstore">PriorityReqStore<a class="headerlink" href="#priorityreqstore" title="Permanent link">&para;</a></h2>
 <p>PriorityReqStore is a resource store with basic priority handling capabilities. Users can add a priority for each of the get(or put) requests. Request with lower values of priority yields first. If two requests with same priority are placed from two processes then FIFO order is followed to yield the requests.</p>
 <p><strong>Main Features:</strong>
-- Manages multiple requests with different priorities.</p>
+- Manages concurrent requests with different priority values.</p>
 <h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
 <ul>
 <li><strong><code>env</code></strong>: The SimPy environment managing the simulation.  </li>
@@ -927,21 +931,19 @@ T=4.00: Machine green: got both inputs
 
     <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
     <span class="n">item1</span> <span class="o">=</span> <span class="n">item</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;item&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;T=</span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">: Source </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> Going to put an item in store </span><span class="si">{</span><span class="n">item1</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> with priority </span><span class="si">{</span><span class="n">priority</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;T=</span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">: Source </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> Going to put an item in </span><span class="se">\</span>
+<span class="s1">                    store </span><span class="si">{</span><span class="n">item1</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> with priority </span><span class="si">{</span><span class="n">priority</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
     <span class="k">yield</span> <span class="n">store</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">item1</span><span class="p">,</span><span class="n">priority</span><span class="p">)</span>
-
-
-    <span class="c1">#print(f&#39;T={env.now:.2f}: Source {name} is putting an item in store {item1.name} with priority {priority}&#39;)</span>
     <span class="n">i</span><span class="o">+=</span><span class="mi">2</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">sink</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">env</span><span class="p">,</span><span class="n">delay</span><span class="p">,</span><span class="n">priority</span><span class="p">):</span>
 
     <span class="k">yield</span> <span class="n">env</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;T=</span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">: Sink </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> placed a get request with priority </span><span class="si">{</span><span class="n">priority</span><span class="si">}</span><span class="s1"> in the store&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;T=</span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">: Sink </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> placed a get request with </span><span class="se">\</span>
+<span class="s1">                     priority </span><span class="si">{</span><span class="n">priority</span><span class="si">}</span><span class="s1"> in the store&#39;</span><span class="p">)</span>
     <span class="n">item</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">store</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">priority</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;T=</span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">now</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">: Sink </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> Got an item from store </span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="c1">#p5= env.process(source(&#39;IN-A&#39;,env,1))</span>
-<span class="c1">#p6= env.process(source(&#39;IN-B&#39;,env,1))</span>
+
 
 
 <span class="n">env</span><span class="o">=</span> <span class="n">simpy</span><span class="o">.</span><span class="n">Environment</span><span class="p">()</span>
