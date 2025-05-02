@@ -50,7 +50,7 @@ env = simpy.Environment()
 itemstore = ReservablePriorityReqStore(env, capacity=3)
 
 def producer(env, itemstore, name, priority):
-    """Producer process that reserves space, puts an item, and handles priority."""
+    """Producer process produces items and puts it in the store."""
     yield env.timeout(random.uniform(1, 3))  # Simulate time before producing
 
     put_reservation = itemstore.reserve_put(priority=priority)
@@ -61,8 +61,7 @@ def producer(env, itemstore, name, priority):
     print(f"T={env.now:.2f} : {name} added to store with priority {priority}")
 
 def consumer(env, itemstore, name, priority, cancel=False):
-    """Consumer process that reserves an item, retrieves it, and optionally 
-    cancels."""
+    """Consumer process picks up items from the store."""
    
     get_reservation = itemstore.reserve_get(priority=priority)
     print(f"T={env.now:.2f} : {name} placed a reserve_get request 
@@ -94,7 +93,7 @@ env.process(producer(env, itemstore, "ItemC", priority=3))
 env.run(until=10)
 ```
 
--**Simulation output**  
+**Simulation output**  
 ```
 T=0.00 : Consumer1 placed a reserve_get request to store with priority 3
 T=0.00 : Consumer1 CANCELED reservation
@@ -250,7 +249,7 @@ run_simulation()
 
 ```
 
--**Simulation output** 
+**Simulation output** 
 
 ```
 T=0.00: Machine orange: waiting to yield reserve_get requests
@@ -332,7 +331,7 @@ p4= env.process(source('IN-B',env,1,1))
 env.run(until=5)
 ```
 
--**Simulation output** 
+**Simulation output** 
 ```
 T=0.00: Sink OUT-1 placed a get request with priority 2 in the store
 T=0.00: Sink OUT-2 placed a get request with priority 1 in the store
@@ -402,7 +401,7 @@ if __name__ == "__main__":
 
 ```
 
--**Simulation output** 
+**Simulation output** 
 ```
 T=0.00: Admin places a request with priority 3
 T=0.00: Library places a request with priority 3

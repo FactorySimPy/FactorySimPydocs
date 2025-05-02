@@ -312,21 +312,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Example Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#simulation-output" class="md-nav__link">
-    <span class="md-ellipsis">
-      Simulation output
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -335,21 +320,6 @@
       Usecase
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Usecase">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#simulation-output_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Simulation output
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -384,21 +354,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Example Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#simulation-output_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Simulation output
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -407,21 +362,6 @@
       Usecase
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Usecase">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#simulation-output_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Simulation output
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -582,21 +522,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Example Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#simulation-output" class="md-nav__link">
-    <span class="md-ellipsis">
-      Simulation output
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -605,21 +530,6 @@
       Usecase
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Usecase">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#simulation-output_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Simulation output
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -654,21 +564,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Example Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#simulation-output_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Simulation output
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -677,21 +572,6 @@
       Usecase
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Usecase">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#simulation-output_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Simulation output
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -800,7 +680,7 @@ However, when implementhing SimPy interrupts, the events should be manually canc
 
 <span class="n">env</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">until</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div>
-<h6 id="simulation-output">Simulation output<a class="headerlink" href="#simulation-output" title="Permanent link">&para;</a></h6>
+<p>-<strong>Simulation output</strong><br />
 <div class="highlight"><pre><span></span><code>T=0.00 : Consumer1 placed a reserve_get request to store with priority 3
 T=0.00 : Consumer1 CANCELED reservation
 T=0.00 : Consumer2 placed a reserve_get request to store with priority 1
@@ -812,7 +692,7 @@ T=2.23 : Consumer3 yielded from store with priority 2
 T=2.54 : ItemC added to store with priority 3
 T=5.40 : Consumer2 retrieved ItemB from store with priority 1
 T=6.02 : Consumer3 retrieved ItemA from store with priority 2 
-</code></pre></div>
+</code></pre></div></p>
 <h5 id="usecase">Usecase<a class="headerlink" href="#usecase" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code><span class="c1"># @title Usecase</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">simpy</span>
@@ -948,7 +828,7 @@ T=6.02 : Consumer3 retrieved ItemA from store with priority 2
 <span class="c1"># Run it</span>
 <span class="n">run_simulation</span><span class="p">()</span>
 </code></pre></div>
-<h6 id="simulation-output_1">Simulation output<a class="headerlink" href="#simulation-output_1" title="Permanent link">&para;</a></h6>
+<p>-<strong>Simulation output</strong> </p>
 <div class="highlight"><pre><span></span><code>T=0.00: Machine orange: waiting to yield reserve_get requests
 T=0.00: Machine green: waiting to yield reserve_get requests
 T=1.00: Producer red: added red1 (store size=1)
@@ -971,8 +851,10 @@ T=4.00: Machine green: got both inputs
 <hr />
 <h2 id="priorityreqstore">PriorityReqStore<a class="headerlink" href="#priorityreqstore" title="Permanent link">&para;</a></h2>
 <p>PriorityReqStore is a resource store with basic priority handling capabilities. Users can add a priority for each of the get(or put) requests. Request with lower values of priority yields first. If two requests with same priority are placed from two processes then FIFO order is followed to yield the requests.</p>
-<p><strong>Main Features:</strong>
-- Manages concurrent requests with different priority values.</p>
+<p><strong>Main Features:</strong></p>
+<ul>
+<li><strong>Priority for requests</strong>: Manages concurrent requests with different priority values.</li>
+</ul>
 <h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
 <ul>
 <li><strong><code>env</code></strong>: The SimPy environment managing the simulation.  </li>
@@ -1016,14 +898,14 @@ T=4.00: Machine green: got both inputs
 
 <span class="n">env</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">until</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div>
-<h6 id="simulation-output_2">Simulation output<a class="headerlink" href="#simulation-output_2" title="Permanent link">&para;</a></h6>
+<p>-<strong>Simulation output</strong> 
 <div class="highlight"><pre><span></span><code>T=0.00: Sink OUT-1 placed a get request with priority 2 in the store
 T=0.00: Sink OUT-2 placed a get request with priority 1 in the store
 T=1.00: Source IN-A Going to put an item in store itemIN-A1 with priority 2
 T=1.00: Source IN-B Going to put an item in store itemIN-B1 with priority 1
 T=1.00: Sink OUT-2 Got an item from store itemIN-A1
 T=1.00: Sink OUT-1 Got an item from store itemIN-B1
-</code></pre></div>
+</code></pre></div></p>
 <h3 id="usecase_1">Usecase<a class="headerlink" href="#usecase_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">A university’s Central IT Department supports Admin, Library, Student Labs,</span>
@@ -1080,7 +962,7 @@ T=1.00: Sink OUT-1 Got an item from store itemIN-B1
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">run_central_it_simulation</span><span class="p">()</span>
 </code></pre></div>
-<h6 id="simulation-output_3">Simulation output<a class="headerlink" href="#simulation-output_3" title="Permanent link">&para;</a></h6>
+<p>-<strong>Simulation output</strong> 
 <div class="highlight"><pre><span></span><code>T=0.00: Admin places a request with priority 3
 T=0.00: Library places a request with priority 3
 T=0.00: Student Lab places a request with priority 1
@@ -1091,7 +973,7 @@ T=2.00: IT Department added System_2_after_delay
 T=2.00: Research Lab received System_2_after_delay
 T=2.00: IT Department added System_3_after_delay
 T=2.00: Admin received System_3_after_delay
-</code></pre></div>
+</code></pre></div></p>
 <p><a href="priorityreqstore/">Go to API Reference</a></p>
 
 
