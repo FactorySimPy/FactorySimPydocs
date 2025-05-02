@@ -205,7 +205,7 @@ class ReservablePriorityReqStore(Store):
             get_event_to_cancel (simpy.Event): The reservation event that needs to be canceled.
 
         Returns:
-            bool: True if the reservation was successfully canceled.
+            Value (bool): True if the reservation was successfully canceled.
 
         Raises:
             RuntimeError: If the specified event does not exist in `reserve_get_queue`
@@ -257,7 +257,7 @@ class ReservablePriorityReqStore(Store):
                                       Lower values indicate higher priority. Defaults to 0.
 
         Returns:
-            simpy.Event: A reservation event that will succeed when an item becomes available.
+           event (simpy.Event): A reservation event that will succeed when an item becomes available.
         """
         #adding attributes to the newly created event for reserve_get
         event = self.env.event()
@@ -342,7 +342,7 @@ class ReservablePriorityReqStore(Store):
             get_event (simpy.Event): The reservation event associated with the request.
 
         Returns:
-            object: The retrieved item if successful, otherwise raises an error
+            item (Object): The retrieved item if successful, otherwise raises an error
 
         Raises:
             RuntimeError: If no reservations are available in the reservations_get
@@ -375,7 +375,7 @@ class ReservablePriorityReqStore(Store):
             get_event (simpy.Event): The event corresponding to the reservation.
 
         Returns:
-            object: The retrieved item if successful, otherwise `None`.
+            item (Object): The retrieved item if successful, otherwise `None`.
         """
         item = None
         idx=0
@@ -400,7 +400,7 @@ class ReservablePriorityReqStore(Store):
             get_event (simpy.Event): The event associated with the reservation request.
 
         Returns:
-            object: The retrieved item if successful.
+            item (object): The retrieved item if successful.
 
         Raises:
             RuntimeError: If the process does not have a valid reservation ie, if the get_event is not in the reservations_gett list
@@ -447,7 +447,7 @@ class ReservablePriorityReqStore(Store):
             item (object): The item to be added to the store.
 
         Returns:
-            bool: True if the put operation succeeded, False otherwise.
+            proceed bool: True if the put operation succeeded, False otherwise.
 
         Raises:
             RuntimeError: If no reservations are available in the reservations_put
