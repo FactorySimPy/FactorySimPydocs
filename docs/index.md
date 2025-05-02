@@ -20,7 +20,7 @@ However, when implementhing SimPy interrupts, the events should be manually canc
 The `ReservablePriorityReqStore` extends SimPy's `Store` by allowing users to:  
 - **Reserve Capacity**: Processes can reserve space (or item) in the store before actual put (or get) in it.  
 - **Enforce Reservation Rules**: Prohibits any process from adding (or getting) items to the store without a prior reservation.  
-- **Priority for requests**: Users can pass a priority along with the reservation requests. The requests with the highest priority(lowest first) will be yielded first. Two requests with same priority will be yielded in a FIFO manner
+- **Priority for requests**: Users can pass a priority along with the reservation requests. The requests with the highest priority(lowest first) will be yielded first. Two requests with same priority will be yielded in a FIFO manner.
 - **Cancel a reservation**: Allows users to cancel a placed/yielded reserve_put (or reserve_get) request.
 
 
@@ -58,10 +58,10 @@ def producer(env, itemstore, name, priority):
 
 def consumer(env, itemstore, name, priority, cancel=False):
     """Consumer process that reserves an item, retrieves it, and optionally cancels."""
-    #yield env.timeout(random.uniform(2, 5))  # Simulate time before consuming
-
+   
     get_reservation = itemstore.reserve_get(priority=priority)
-    print(f"T={env.now:.2f} : {name} placed a reserve_get request to store with priority {priority}")
+    print(f"T={env.now:.2f} : {name} placed a reserve_get request \
+             to store with priority {priority}")
 
     if cancel and random.choice([True, False]):
         itemstore.reserve_get_cancel(get_reservation)
@@ -132,7 +132,8 @@ def producer(env, interarrival, store, item_prefix):
         yield put_req
         item_name = f"{item_prefix}{i+1}"
         store.put(put_req, item_name)
-        print(f"T={env.now:.2f}: Producer {item_prefix}: added {item_name} (store size={len(store.items)})")
+        print(f"T={env.now:.2f}: Producer {item_prefix}: added {item_name} \
+                   (store size={len(store.items)})")
         
         i += 1
 
@@ -148,10 +149,11 @@ def consumer(env, interarrival, store, consumer_name):
        
 
 # ----- Machine -----
-def machine(env, delay, input_stores, input_priorities, output_store, output_prefix):
+def machine(env, delay, input_stores, input_priorities, 
+               output_store, output_prefix):
     """
-    A machine that requests multiple items from input stores (with optional priorities),
-    waits processing time, and outputs a new item.
+    A machine that requests multiple items from input stores 
+    (with optional priorities),waits processing time, and outputs a new item.
     
     Args:
         input_stores (list): list of stores to get inputs from
@@ -173,7 +175,8 @@ def machine(env, delay, input_stores, input_priorities, output_store, output_pre
                 req = store.reserve_get()
             input_requests.append(req)
 
-        print(f"T={env.now:.2f}: Machine {output_prefix}: waiting to yield reserve_get requests")
+        print(f"T={env.now:.2f}: Machine {output_prefix}: waiting to yield \
+                           reserve_get requests")
         yield env.all_of(input_requests)
 
         # Get input items
@@ -184,7 +187,8 @@ def machine(env, delay, input_stores, input_priorities, output_store, output_pre
         yield env.timeout(delay)
 
         output_store.put(put_req, f"{output_prefix}{i}")
-        print(f"T={env.now:.2f}: Machine {output_prefix}: finished product is available in its store")
+        print(f"T={env.now:.2f}: Machine {output_prefix}: finished product is \
+                        available in its store")
         i += 1
 
 # ----- Simulation Setup -----
@@ -213,8 +217,8 @@ def run_simulation():
 
     # Machine setups
     machine_params = [
-        (1, [yellowstore, redstore], [None, None], orangestore, "orange"),  # Machine1
-        (1, [yellowstore, bluestore], [-2, None], greenstore, "green")      # Machine2
+        (1, [yellowstore, redstore], [None, None], orangestore, "orange"),#Machine1
+        (1, [yellowstore, bluestore], [-2, None], greenstore, "green") # Machine2
     ]
 
     # Start Producers
@@ -272,7 +276,7 @@ T=4.00: Machine green: got both inputs
 PriorityReqStore is a resource store with basic priority handling capabilities. Users can add a priority for each of the get(or put) requests. Request with lower values of priority yields first. If two requests with same priority are placed from two processes then FIFO order is followed to yield the requests.
 
 **Main Features:**
-- Manages multiple requests with different priorities.
+- Manages concurrent requests with different priority values.
 
 
 ##### Parameters  
@@ -295,21 +299,19 @@ def source(name,env,delay,priority=0):
 
     yield env.timeout(delay)
     item1 = item(name='item'+str(name)+str(i))
-    print(f'T={env.now:.2f}: Source {name} Going to put an item in store {item1.name} with priority {priority}')
+    print(f'T={env.now:.2f}: Source {name} Going to put an item in \
+                    store {item1.name} with priority {priority}')
 
     yield store.put(item1,priority)
-
-
-    #print(f'T={env.now:.2f}: Source {name} is putting an item in store {item1.name} with priority {priority}')
     i+=2
 def sink(name,env,delay,priority):
 
     yield env.timeout(delay)
-    print(f'T={env.now:.2f}: Sink {name} placed a get request with priority {priority} in the store')
+    print(f'T={env.now:.2f}: Sink {name} placed a get request with \
+                     priority {priority} in the store')
     item = yield store.get(priority)
     print(f'T={env.now:.2f}: Sink {name} Got an item from store {item.name}')
-#p5= env.process(source('IN-A',env,1))
-#p6= env.process(source('IN-B',env,1))
+
 
 
 env= simpy.Environment()
