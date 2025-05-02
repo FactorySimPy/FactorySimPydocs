@@ -32,8 +32,8 @@ class ReservablePriorityReqStore(Store):
            reserved_events (list):  Maintains events corresponding to reserved items to preserve item order by index
            reserve_put_queue (list): Queue for managing reserve_put reservations
            reservations_put (list): List of successful put reservations
-           reserve_get_queue(list): Queue for managing reserve_get reservations
-           reservations_get(list):List of successful get reservations
+           reserve_get_queue (list): Queue for managing reserve_get reservations
+           reservations_get (list):List of successful get reservations
         """
 
     def __init__(self, env, capacity=float('inf')):
@@ -70,7 +70,8 @@ class ReservablePriorityReqStore(Store):
                                       Lower values indicate higher priority. Defaults to 0.
 
         Returns:
-            simpy.Event: A reservation event that will succeed when space is available.
+            event (simpy.Event): A reservation event that will succeed when space is available.
+
         """
         event = self.env.event()
         event.resourcename = self  # Store reference
@@ -165,7 +166,7 @@ class ReservablePriorityReqStore(Store):
             put_event_to_cancel (simpy.Event): The reservation event that needs to be canceled.
 
         Returns:
-            bool: True if the reservation was successfully canceled.
+           Value (bool): True if the reservation was successfully canceled.
 
         Raises:
             RuntimeError: If the specified event does not exist in `reserve_put_queue`

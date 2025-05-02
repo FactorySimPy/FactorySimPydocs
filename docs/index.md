@@ -277,7 +277,7 @@ T=4.00: Machine green: got both inputs
 
 ## PriorityReqStore
 
-PriorityReqStore is a resource store with basic priority handling capabilities. Users can add a priority for each of the get(or put) requests. Request with lower values of priority yields first. If two requests with same priority are placed from two processes then FIFO order is followed to yield the requests.
+PriorityReqStore is a resource store with priority handling capabilities. Users can add a priority for each of the get(or put) requests. Request with lower values of priority yields first among all get(or put) requests. If two requests with same priority are placed from two processes then FIFO order is followed to yield the requests.
 
 **Main Features:**
 
