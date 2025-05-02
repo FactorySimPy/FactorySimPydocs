@@ -18,9 +18,13 @@ However, when implementhing SimPy interrupts, the events should be manually canc
  
 
 The `ReservablePriorityReqStore` extends SimPy's `Store` by allowing users to:  
+
 - **Reserve Capacity**: Processes can reserve space (or item) in the store before actual put (or get) in it.  
+
 - **Enforce Reservation Rules**: Prohibits any process from adding (or getting) items to the store without a prior reservation.  
+
 - **Priority for requests**: Users can pass a priority along with the reservation requests. The requests with the highest priority(lowest first) will be yielded first. Two requests with same priority will be yielded in a FIFO manner.
+
 - **Cancel a reservation**: Allows users to cancel a placed/yielded reserve_put (or reserve_get) request.
 
 
@@ -57,10 +61,11 @@ def producer(env, itemstore, name, priority):
     print(f"T={env.now:.2f} : {name} added to store with priority {priority}")
 
 def consumer(env, itemstore, name, priority, cancel=False):
-    """Consumer process that reserves an item, retrieves it, and optionally cancels."""
+    """Consumer process that reserves an item, retrieves it, and optionally 
+    cancels."""
    
     get_reservation = itemstore.reserve_get(priority=priority)
-    print(f"T={env.now:.2f} : {name} placed a reserve_get request \
+    print(f"T={env.now:.2f} : {name} placed a reserve_get request 
              to store with priority {priority}")
 
     if cancel and random.choice([True, False]):
@@ -72,7 +77,8 @@ def consumer(env, itemstore, name, priority, cancel=False):
     print(f"T={env.now:.2f} : {name} yielded from store with priority {priority}")
     yield env.timeout(random.uniform(2, 5))
     item = itemstore.get(get_reservation)
-    print(f"T={env.now:.2f} : {name} retrieved {item.name} from store with priority {priority}")
+    print(f"T={env.now:.2f} : {name} retrieved {item.name} from store with 
+                priority {priority}")
 
 # Creating producers and consumers
 env.process(consumer(env, itemstore, "Consumer1", priority=3, cancel=True))
@@ -132,7 +138,7 @@ def producer(env, interarrival, store, item_prefix):
         yield put_req
         item_name = f"{item_prefix}{i+1}"
         store.put(put_req, item_name)
-        print(f"T={env.now:.2f}: Producer {item_prefix}: added {item_name} \
+        print(f"T={env.now:.2f}: Producer {item_prefix}: added {item_name} 
                    (store size={len(store.items)})")
         
         i += 1
@@ -175,7 +181,7 @@ def machine(env, delay, input_stores, input_priorities,
                 req = store.reserve_get()
             input_requests.append(req)
 
-        print(f"T={env.now:.2f}: Machine {output_prefix}: waiting to yield \
+        print(f"T={env.now:.2f}: Machine {output_prefix}: waiting to yield 
                            reserve_get requests")
         yield env.all_of(input_requests)
 
@@ -187,7 +193,7 @@ def machine(env, delay, input_stores, input_priorities,
         yield env.timeout(delay)
 
         output_store.put(put_req, f"{output_prefix}{i}")
-        print(f"T={env.now:.2f}: Machine {output_prefix}: finished product is \
+        print(f"T={env.now:.2f}: Machine {output_prefix}: finished product is 
                         available in its store")
         i += 1
 
@@ -217,8 +223,8 @@ def run_simulation():
 
     # Machine setups
     machine_params = [
-        (1, [yellowstore, redstore], [None, None], orangestore, "orange"),#Machine1
-        (1, [yellowstore, bluestore], [-2, None], greenstore, "green") # Machine2
+       (1, [yellowstore, redstore], [None, None], orangestore, "orange"),#Machine1
+       (1, [yellowstore, bluestore], [-2, None], greenstore, "green") # Machine2
     ]
 
     # Start Producers
@@ -299,7 +305,7 @@ def source(name,env,delay,priority=0):
 
     yield env.timeout(delay)
     item1 = item(name='item'+str(name)+str(i))
-    print(f'T={env.now:.2f}: Source {name} Going to put an item in \
+    print(f'T={env.now:.2f}: Source {name} Going to put an item in 
                     store {item1.name} with priority {priority}')
 
     yield store.put(item1,priority)
@@ -307,7 +313,7 @@ def source(name,env,delay,priority=0):
 def sink(name,env,delay,priority):
 
     yield env.timeout(delay)
-    print(f'T={env.now:.2f}: Sink {name} placed a get request with \
+    print(f'T={env.now:.2f}: Sink {name} placed a get request with 
                      priority {priority} in the store')
     item = yield store.get(priority)
     print(f'T={env.now:.2f}: Sink {name} Got an item from store {item.name}')
@@ -360,7 +366,8 @@ class CentralITDepartment:
 
     def department_request(self, department_name, priority):
         """Department places a request for a system."""
-        print(f"T={self.env.now:.2f}: {department_name} places a request with priority {priority}")
+        print(f"T={self.env.now:.2f}: {department_name} places a request with 
+                                 priority {priority}")
         system = yield self.store.get(priority=priority)
         self.results.append((self.env.now, department_name, system))
         print(f"T={self.env.now:.2f}: {department_name} received {system}")
