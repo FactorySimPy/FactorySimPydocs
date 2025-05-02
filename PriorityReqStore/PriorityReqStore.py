@@ -70,11 +70,12 @@ class PriorityPut(Put):
 
 class PriorityReqStore(Store):
     """
-        This is a class that is derived from SimPy's Store class and has extra capabilities
-        that makes it a priority-based store for processes for item put and get.
+        This is a class derived from SimPy's Store class and has extra capabilities
+        that makes it a priority-based store for put and get.
 
-        Processes can pass a priority as argument in the put and get request. Lower values indicate higher priority.
-        If two processes have the same priority, the one that requested first will be served first.
+        Processes can pass a priority as argument in the put and get request. Request with lower
+        values of priority yields first among all get(or put) requests. If two requests with same 
+        priority are placed from two processes then FIFO order is followed to yield the requests.
 
         """
 
